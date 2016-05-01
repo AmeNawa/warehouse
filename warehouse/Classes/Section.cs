@@ -20,18 +20,25 @@ namespace Warehouse.Classes
             }
         }
 
+        public int sectionID { get; set; }
+        public int shelvesAmount { get; set; }
         Shelves shelves;
 
-        int sectionID { get; set; }
 
-        int shelvesAmount { get; set; }
-
-
-        public Section(int amount, int height, int width)
+        public Section(int ID, int amount, int height, int width)
         {
+            sectionID = ID;
             shelvesAmount = amount;
             shelves.height = height;
             shelves.width = width;
+        }
+
+        public Section(Section preSection, int n = 1, int sA = 2)
+        {
+            sectionID = preSection.sectionID + n;
+            shelvesAmount = preSection.shelvesAmount / sA;
+            shelves.height = preSection.shelves.height;
+            shelves.width = preSection.shelves.width;
         }
 
         public int SingleSpace(Shelves shelve)

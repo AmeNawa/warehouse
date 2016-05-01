@@ -12,11 +12,17 @@ namespace Warehouse.Classes
 
         public Storehouse(int amount, int height, int width)
         {
-            sections.Add(new Section(amount, height, width));
+            sections.Add(new Section(0,amount, height, width));
         }
-        public void StrHouseDivide(Storehouse strhouse);    //TODO
+
+
+        public void StrHouseDivide(List<Section> sections, Section section)    //TODO
         {
-            
+           var sec = sections.Find(s => s.sectionID == section.sectionID);
+            sections.Add(new Section(sec));
+            sections.Add(new Section(sec, 1));
+            sections.Remove(section);
+
         }
         
     }
